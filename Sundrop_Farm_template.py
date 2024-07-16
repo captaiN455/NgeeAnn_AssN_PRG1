@@ -58,7 +58,7 @@ def in_town(game_vars):
 def in_shop(game_vars):
     pass
 
-
+print(111111)
 #----------------------------------------------------------------------
 # draw_farm(farm, farmer_row, farmer_col)
 #
