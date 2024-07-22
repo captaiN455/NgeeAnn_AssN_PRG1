@@ -1,3 +1,5 @@
+import numbers
+
 # Game variables
 game_vars = {
     'day': 1,
@@ -33,6 +35,33 @@ farm = [ [None, None, None, None, None],
          [None, None, None, None, None],
          [None, None, None, None, None] ]
 
+def start_menu(game_vars):
+    print
+    ('''
+    -----------------------------------------------------------------------
+    Welcome to Sundrop Farm!
+
+    You took out a loan to buy a small farm in Albatross Town.
+    You have 20 days to pay off your debt of $100.
+    You might even be able to make a little profit.
+    How Sucessful will you be?
+
+    1) Start a New Game
+    2) Load your Saved Game
+
+    0) Exit Game
+    -----------------------------------------------------------------------
+    Your Choice?
+''')
+    player_Input = int(input())
+
+    # Check player input
+    if isinstance(player_Input, numbers.Number):
+        player_Input = str(player_Input)
+    else:
+        return game_vars
+    return player_Input
+
 #-----------------------------------------------------------------------
 # in_town(game_vars)
 #
@@ -46,7 +75,23 @@ farm = [ [None, None, None, None, None],
 #      0) Exit the game (without saving)
 #-----------------------------------------------------------------------
 def in_town(game_vars):
-    pass
+    greeting = '''
+    +---------------------------------------------------------------------+
+    |   Day {day}   Energy:{energy}     Money: ${money}                   |
+    {seeds}
+    +---------------------------------------------------------------------+
+
+    You are in Albatross
+'''
+    player_Input = int(input())
+
+    # Check player input
+    if isinstance(player_Input, numbers.Number):
+        player_Input = str(player_Input)
+    else:
+        return game_vars
+
+    return player_Input
 
 #----------------------------------------------------------------------
 # in_shop(game_vars)
@@ -117,6 +162,21 @@ def in_farm(game_vars, farm):
 #      - Contents of Seed Bag
 #----------------------------------------------------------------------
 def show_stats(game_vars):
+    day_now = game_vars["day"]
+    energy_now = game_vars["energy"]
+    money_now = game_vars["money"]
+    seeds_now = game_vars["bag"]
+
+    # check if have seeds in bag
+
+
+    stats_menu = '''
+    +---------------------------------------------------------------------+
+    |   Day {day}   Energy:{energy}     Money: ${money}                   |
+    {seeds}
+    +---------------------------------------------------------------------+
+    \n\n
+'''.format(day = day_now, energy = energy_now, money = money_now)
     pass
 
 #----------------------------------------------------------------------
@@ -162,3 +222,5 @@ print("How successful will you be?")
 print("----------------------------------------------------------")
 
 # Write your main game loop here
+
+show_stats(game_vars)
